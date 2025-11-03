@@ -98,10 +98,28 @@ pipeline {
     
     post {
         success {
-            echo 'Pipeline succeeded!'
+            script {
+                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: AWS_CRED_ID]]) {
+                    sh '''
+                        aws sns publish \
+                        --topic-arn arn:aws:sns:ap-south-1:315838644546:MyAppPipelineAlerts \
+                        --message "✅ Jenkins Pipeline Succeeded for MyApp" \
+                        --subject "MyApp Pipeline Success"
+                    '''
+                }
+            }
         }
         failure {
-            echo 'Pipeline failed.'
+            script {
+                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: AWS_CRED_ID]]) {
+                    sh '''
+                        aws sns publish \
+                        --topic-arn arn:aws:sns:ap-south-1:315838644546:MyAppPipelineAlerts \
+                        --message "❌ Jenkins Pipeline Failed for MyApp" \
+                        --subject "MyApp Pipeline Failure"
+                    '''
+                }
+            }
         }
     }
 }
