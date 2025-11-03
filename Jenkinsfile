@@ -5,10 +5,10 @@ pipeline {
         AWS_ACCOUNT_ID = "315838644546" 
         AWS_REGION     = "ap-south-1"     
         ECR_REPO_NAME  = "my-simple-app"     
-        DEPLOY_CREDS   = "EC2-SSH" 
-        DEPLOY_HOST    = "ec2-13-203-196-0.ap-south-1.compute.amazonaws.com" 
+        DEPLOY_CREDS   = "ec2-ssh-key" 
+        DEPLOY_HOST    = "ec2-3-111-39-159.ap-south-1.compute.amazonaws.com" 
         DEPLOY_USER    = "ubuntu"
-        AWS_CRED_ID    = "MY-AWS-ACCOUNT"         
+        AWS_CRED_ID    = "aws-jenkins-creds"         
     }
     tools {
         nodejs 'NodeJS-16' 
