@@ -6,7 +6,7 @@ pipeline {
         AWS_REGION     = "ap-south-1"     
         ECR_REPO_NAME  = "my-simple-app"     
         DEPLOY_CREDS   = "ec2-ssh-key" 
-        DEPLOY_HOST    = "ec2-13-127-18-79.ap-south-1.compute.amazonaws.com" 
+        DEPLOY_HOST    = "ec2-65-0-69-225.ap-south-1.compute.amazonaws.com" 
         DEPLOY_USER    = "ubuntu"
         AWS_CRED_ID    = "aws-jenkins-creds"
     }
